@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'logstash-filter-naxsi'
-  s.version         = '0.9.0'
+  s.version         = '0.9.1'
   s.licenses = ['Apache License (2.0)']
   s.summary = "This filter plugin will split a naxsi event into multiple in conjunction with other filters."
   s.description = ""
