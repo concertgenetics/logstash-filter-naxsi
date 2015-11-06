@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   # Gem dependencies
   s.add_runtime_dependency "logstash-core", "< 2.0.0", ">= 1.4.0"
   s.add_development_dependency 'logstash-devutils'
+  s.add_development_dependency "concurrent-ruby", "0.9.1"
 end

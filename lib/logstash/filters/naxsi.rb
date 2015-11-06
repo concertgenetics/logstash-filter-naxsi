@@ -21,15 +21,17 @@ class LogStash::Filters::Naxsi < LogStash::Filters::Base
   public
   def filter(event)
 
+    event_hash = event.to_hash()
+
     # Get all of your idN keys from the event
-    ids = event.keys.select { |a| /id\d+/ =~ a }
+    ids = event_hash.keys.select { |a| /id\d+/ =~ a }
 
     ids.each do |id|
 
       new_event = LogStash::Event.new()
 
       # Copy all the keys that are not tied to the exceptions
-      event.keys.each do |key|
+      event_hash.keys.each do |key|
         next if /id\d+|score\d+|var_name\d+|zone\d+|cscore\d+/ =~ key
         new_event[key] = event[key]
       end
@@ -40,8 +42,8 @@ class LogStash::Filters::Naxsi < LogStash::Filters::Base
 
       # Add the properties for the exception
       ["id","score","var_name","zone","cscore"].each do |prop|
-        next if event.has_key?(prop + exception_num)
-        new_event[prop] = event[prop + exception_num]
+        next unless event_hash.has_key?(prop + exception_num)
+        new_event[prop] = event_hash[prop + exception_num]
       end
 
       # Create the new event
