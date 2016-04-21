@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'logstash-filter-naxsi'
-  s.version         = '0.9.1'
+  s.version         = '0.9.2'
   s.licenses = ['Apache License (2.0)']
   s.summary = "This filter plugin will split a naxsi event into multiple in conjunction with other filters."
   s.description = ""
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.metadata = { "logstash_plugin" => "true", "logstash_group" => "filter" }
 
   # Gem dependencies
-  s.add_runtime_dependency "logstash-core", "< 2.0.0", ">= 1.4.0"
+  s.add_runtime_dependency "logstash-core", ">= 2.0.0", "< 3.0.0"
   s.add_development_dependency 'logstash-devutils'
   s.add_development_dependency "concurrent-ruby", "0.9.1"
 end
